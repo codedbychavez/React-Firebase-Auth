@@ -1,8 +1,20 @@
+import React from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 
+// Import routes
+import routes from './routes';
+
+// Imports for routing and navigation
+import { useRoutes, BrowserRouter as Router } from 'react-router-dom';
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import AuthPage from './Pages/AuthPage';
+import IsLoggedIn from './AuthGuard';
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,25 +31,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  const isAuthenticated = IsLoggedIn();
+  const routing = useRoutes(routes(isAuthenticated));
+  return routing;
 }
 
-export default App;
+const AppWrapper = () => {
+  return (
+    <Router>
+      <App />
+    </Router>
+  )
+}
+
+export default AppWrapper;
