@@ -1,10 +1,14 @@
-import './AuthPage.css';
+import "./AuthPage.css";
 
-const AuthPage = () => {
-    return(
-        <h3>Auth Page</h3>
-    )
-}
+import LoginForm from "../Components/LoginForm";
 
+const AuthPage = (props) => {
+  return (
+    <div>
+      <h2>Login</h2>
+      <LoginForm auth={props.auth} />
+    </div>
+  );
+};
 
 export default AuthPage;
