@@ -1,5 +1,5 @@
 # React-Firebase-Auth
-Signup and Login flow using React and Google Firebase Auth
+Auth Login flow using in React using Google Firebase Auth
 
 ## Getting Setup
 1. Clone this repo
